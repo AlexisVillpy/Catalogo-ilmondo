@@ -237,6 +237,30 @@
       "precio": 7200,
       "caja":"24 u/caja",
       "categoria": "Cerveza"
+    }, {
+      "nombre": "CERVEZA  EDELMEISTER STRONG 8.8% 500ML",
+      "foto": "assets/fotos-productos/strong.png",
+      "precio": 8000,
+      "caja":"24 u/caja",
+      "categoria": "Cerveza"
+    }, {
+      "nombre": "CERVEZA  EDELMEISTER IPA 4.7% 500ML",
+      "foto": "assets/fotos-productos/ipa.png",
+      "precio": 8000,
+      "caja":"24 u/caja",
+      "categoria": "Cerveza"
+    }, {
+      "nombre": "CERVEZA  EDELMEISTER WEIZEN 5.2% 500ML",
+      "foto": "assets/fotos-productos/weizen.png",
+      "precio": 8000,
+      "caja":"24 u/caja",
+      "categoria": "Cerveza"
+    }, {
+      "nombre": "CERVEZA  EDELMEISTER SCHWARZBIER 500ML",
+      "foto": "assets/fotos-productos/Schwarzbier.png",
+      "precio": 8000,
+      "caja":"24 u/caja",
+      "categoria": "Cerveza"
     },{
       "nombre": "DURAZNO SAN SEBASTIÁN 820gr",
       "foto": "assets/fotos-productos/duraznoSansebastian.png",
@@ -402,7 +426,7 @@
     },
     {
       "nombre": "ACETO BALSAMICO DI MODENA 250ML",
-      "foto":  "/Catalogo-ilmondo/assets/fotos-productos/Aceto250ml.png",
+      "foto":  "assets/fotos-productos/Aceto250ml.png",
       "precio":17424,
       "caja":"12 u/caja",
       "categoria": "Pietro Coricelli"

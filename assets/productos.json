@@ -402,7 +402,7 @@
     },
     {
       "nombre": "ACETO BALSAMICO DI MODENA 250ML",
-      "foto": "/Catalogo-ilmondo/assets/fotos-productos/Aceto250ml.png",
+      "foto": "Catalogo-ilmondo/assets/fotos-productos/Aceto250ml.png",
       "precio":17424,
       "caja":"12 u/caja",
       "categoria": "Pietro Coricelli"

@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center; /* Cambiar de flex-start a center */
   padding: 20px;
   margin: 0 auto;
   max-width: 600px;
@@ -86,6 +86,7 @@
   border-radius: 8px;
   overflow: hidden;
   width: 120px;
+  width: 110px;
 }
 
 .comet-v2-input-number-btn {
@@ -98,10 +99,12 @@
   justify-content: center;
   cursor: pointer;
   transition: background 0.3s ease;
+  margin-top: 5px;
 }
 
 .comet-v2-input-number-input {
-  width: 40px;
+  width: 36px;
+  height: 20px;
   text-align: center;
   border: none;
   font-size: 1rem;
@@ -135,7 +138,7 @@
   justify-content: center;
   gap: 8px;
   margin-top: 100px;
-  margin-inline: 30px;
+  margin-inline: 10px;
 }
 
 .title mat-icon {
@@ -168,14 +171,18 @@
   transition: color 0.3s ease;
   position: relative;
   top: 15px;
-  right: 5px;
 }
 
 .delete-link .delete-icon {
   font-size: 1.2rem;
   color: rgba(225, 18, 18, 0.8);
 }
-
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: -2px;
+  margin-top: -1px;
+}
 .delete-link:hover {
   color: rgba(193, 15, 15, 0.9);
 }
@@ -207,15 +214,40 @@
 
 .action-buttons {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
   margin-top: 20px;
   background: #234676;
   border-radius: 10px;
-  padding: 10px 50px;
+  padding: 10px 10px; /* Mantener el padding para que los botones no estén pegados a los bordes */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  gap: 250px;
   font-size: 1rem;
+  width: 100%;
+  gap: 270px; /* Espaciado entre los botones usando vw */
+}
+
+.botones {
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Asegura que los botones estén centrados */
+  width: 100%; /* Asegura que los botones no se desborden */
+}
+
+@media (max-width: 635px) {
+  .action-buttons {
+    gap: 80px; /* Reducir gap en pantallas más pequeñas */
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Superposición semi-translúcida */
+  z-index: 999; /* Asegúrate de que quede encima del contenido */
 }
 
 .send-link {
@@ -412,4 +444,227 @@ select:focus {
 select:hover {
   background-color: #f0f0f0;
   cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .card {
+    padding: 5px; /* Reducir el padding */
+    margin-bottom: 5px; /* Reducir el margen inferior */
+  }
+
+  .image-container img {
+    width: 120px; /* Reducir el ancho de la imagen */
+    height: 120px; /* Reducir la altura de la imagen */
+  }
+
+  .card-title {
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .card-category {
+    font-size: 0.7rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .card-price {
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .iva-text {
+    font-size: 0.72rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .comet-v2-input-number {
+    width: 80px; /* Reducir el ancho del input */
+  }
+
+  .comet-v2-input-number-btn {
+    padding: 0px 0px; /* Reducir el padding */
+    width: 20px; /* Ajustar el ancho */
+    height: 0px; /* Ajustar la altura */
+    margin-top: 5px;
+  }
+
+  .comet-v2-input-number-input {
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .delete-link {
+    margin-top: -5px;
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+    gap: 3px; /* Reducir el espacio entre los elementos */
+  }
+
+  .delete-link .delete-icon {
+   
+    font-size: 1rem; /* Reducir el tamaño del icono */
+  }
+
+  .comet-v2-input-number-btn.decrease,
+  .comet-v2-input-number-btn.increase {
+    font-size: 0.7rem; /* Reducir el tamaño de la fuente */
+  }
+  .delete-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: -5px;
+    margin-top: 1px;
+  }
+}
+
+@media (max-width: 499px) {
+  .card {
+    padding: 5px; /* Reducir el padding */
+    margin-bottom: 5px; /* Reducir el margen inferior */
+  }
+
+  .image-container img {
+    width: 90px; /* Reducir el ancho de la imagen */
+    height: 90px; /* Reducir la altura de la imagen */
+  }
+
+  .card-title {
+    font-size: 0.7rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .card-category {
+    font-size: 0.6rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .card-price {
+    font-size: 0.65rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .iva-text {
+    font-size: 0.6rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .comet-v2-input-number {
+    width: 70px; /* Aumentar el ancho del input */
+  }
+
+  .comet-v2-input-number-btn {
+    padding: 0px 0px; /* Reducir el padding */
+    width: 20px; /* Ajustar el ancho */
+    margin-top: 5px;
+  }
+
+  .comet-v2-input-number-input {
+    font-size: 0.6rem; /* Reducir el tamaño de la fuente */
+    width: 30px; /* Aumentar el ancho del input */
+    height: 10px;
+  }
+
+  .delete-link {
+    margin-top: -10px;
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+    gap: 3px; /* Reducir el espacio entre los elementos */
+  }
+
+  .delete-link .delete-icon {
+    font-size: 1rem; /* Reducir el tamaño del icono */
+  }
+
+  .small-icon {
+    font-size: 18px;
+    width: 15px;
+    height: 22px;
+  }
+
+  .comet-v2-input-number-btn.decrease,
+  .comet-v2-input-number-btn.increase {
+    font-size: 0.1rem; /* Reducir el tamaño de la fuente */
+    width: 18px; /* Reducir el ancho */
+    height: 0px; /* Reducir la altura */
+  }
+}
+
+@media (max-width: 425px) {
+  .card {
+    padding: 5px; /* Reducir el padding */
+    margin-bottom: 5px; /* Reducir el margen inferior */
+  }
+
+  .image-container img {
+    width: 120px; /* Reducir el ancho de la imagen */
+    height: 120px; /* Reducir la altura de la imagen */
+  }
+
+  .card-title {
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .card-category {
+    font-size: 0.7rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .card-price {
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+  }
+
+  .iva-text {
+    font-size: 0.72rem; /* Reducir el tamaño de la fuente */
+  }
+
+
+  .comet-v2-input-number {
+    width: 65px; /* Aumentar el ancho del input */
+  }
+
+  .comet-v2-input-number-btn {
+    padding: 0px; /* Reducir el padding */
+    width: 20px; /* Ajustar el ancho */
+  }
+
+  .comet-v2-input-number-input {
+    font-size: 0.6rem; /* Reducir el tamaño de la fuente */
+    width: 24px; /* Aumentar el ancho del input */
+    height: 10px;
+  }
+
+  .small-icon {
+    font-size: 15px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .delete-link {
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+    gap: 3px; /* Reducir el espacio entre los elementos */
+  }
+
+  .delete-link .delete-icon {
+    font-size: 1rem; /* Reducir el tamaño del icono */
+  }
+
+  .comet-v2-input-number-btn.decrease,
+  .comet-v2-input-number-btn.increase {
+    font-size: 0.1rem; /* Reducir el tamaño de la fuente */
+    width: 20px; /* Reducir el ancho */
+    height: 0px; /* Reducir la altura */
+  }
+
+  .delete-link {
+    font-size: 0.7rem;
+  }
+
+  .delete-icon {
+    margin-top: -3px;
+    margin-right: 2px;
+    width: 12px; /* Ajusta el ancho del icono */
+    height: 13px; /* Ajusta la altura del icono */
+  }
+
+  .back-link,
+  .send-link {
+    font-size: 0.8rem; /* Reducir el tamaño de la fuente */
+    gap: 2px; /* Reducir el espacio entre los elementos */
+    padding: 2px 10px; /* Ajustar el padding vertical para hacer el fondo más fino */
+    background: #234676; /* Asegurar que el fondo azul se mantenga */
+    border-radius: 5px; /* Ajustar el borde redondeado */
+  }
+
+  .back-link .icon,
+  .send-link .icon {
+    font-size: 0.8rem; /* Reducir el tamaño del icono */
+  }
 }

@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import axios from 'axios'; // Importar axios
-import { PdfMonkeyService } from '../pdf-monkey.service'; // Importar el servicio
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-lista',
@@ -18,9 +18,9 @@ export class ListaComponent {
   productosEnLista: any[] = [];
   isLoading: boolean = true;
   showClientForm: boolean = false;
-  clientData = { firstName: '', lastName: '', email: '', sucursal: '' }; // Datos del cliente
+  clientData = { firstName: '', lastName: '', email: '', sucursal: '', phoneNumber: '' }; // Datos del cliente
 
-  constructor(private listaService: ListaService) {}
+  constructor(private listaService: ListaService, private http: HttpClient) {}
 
   ngOnInit() {
     this.productosEnLista = this.listaService.obtenerLista();
@@ -63,12 +63,12 @@ export class ListaComponent {
         const year = date.getFullYear();
         return `${day}/${month}/${year}`;
       };
-
+  
       // Obtener el número incremental (si no existe, inicializarlo en 1)
       let invoiceNumber = parseInt(localStorage.getItem('invoiceNumber') || '0', 10);
       invoiceNumber += 1; // Incrementar el número
       localStorage.setItem('invoiceNumber', invoiceNumber.toString()); // Guardar el número actualizado
-
+  
       // Calcular el total global
       const totalGlobal = Math.round(
         this.productosEnLista.reduce((total, producto) => {
@@ -77,12 +77,12 @@ export class ListaComponent {
           return total + precio * cantidad;
         }, 0)
       );
-
+  
       // Función para formatear precios con puntos como separador de miles
       const formatPrice = (price: number): string => {
         return price.toLocaleString('es-ES'); // Muestra el separador de miles como punto.
       };
-
+  
       // Preparar datos para la factura
       const invoiceData = {
         clientName: `${this.clientData.firstName} ${this.clientData.lastName}`,
@@ -102,7 +102,7 @@ export class ListaComponent {
         invoiceNumber: invoiceNumber.toString().padStart(5, '0'),
         total_without_vat: formatPrice(totalGlobal), // Formatear el total global
       };
-
+  
       // Solicitud a la API de PDFMonkey para generar el documento
       const response = await axios.post(
         'https://api.pdfmonkey.io/api/v1/documents',
@@ -124,18 +124,18 @@ export class ListaComponent {
           },
         }
       );
-
+  
       const documentId = response.data?.document?.id;
       if (documentId) {
         let attempts = 0;
         const maxAttempts = 10;
-
+  
         const checkPdfStatus = async () => {
           if (attempts >= maxAttempts) {
             console.error('El PDF no está listo después de varios intentos.');
             return;
           }
-
+  
           const statusResponse = await axios.get(
             `https://api.pdfmonkey.io/api/v1/documents/${documentId}`,
             {
@@ -144,24 +144,13 @@ export class ListaComponent {
               },
             }
           );
-
+  
           const documentStatus = statusResponse.data?.document?.status;
           if (documentStatus === 'success') {
             const pdfUrl = statusResponse.data?.document?.download_url;
             if (pdfUrl) {
-              // Preparar el mensaje para Slack
-              const slackMessage = `Nuevo pedido recibido:
-Cliente: ${invoiceData.clientName}
-Factura N.º: ${invoiceData.invoiceNumber}
-Email: ${invoiceData.clientEmail}
-Sucursal: ${invoiceData.clientSucursal}
-Fecha: ${invoiceData.orderDate}
-Total sin IVA: ${invoiceData.total_without_vat}
-Ver factura: ${pdfUrl}`;
-
-              // Enviar notificación a Slack a través de tu backend para evitar CORS
-              await axios.post('http://localhost:3000/api/slack-notify', { message: slackMessage });
-              console.log('Notificación enviada a Slack a través del backend');
+              // Enviar el PDF a WhatsApp Business
+              await this.enviarPDFaWhatsApp(pdfUrl);
             } else {
               console.error('No se encontró la URL de descarga del PDF.');
             }
@@ -176,7 +165,7 @@ Ver factura: ${pdfUrl}`;
             setTimeout(checkPdfStatus, 2000);
           }
         };
-
+  
         checkPdfStatus();
       } else {
         console.error(
@@ -189,6 +178,56 @@ Ver factura: ${pdfUrl}`;
     }
   }
 
+  async enviarPDFaWhatsApp(pdfUrl: string): Promise<void> {
+    try {
+      let telefonoDestino = '';
+      if (this.clientData.sucursal === 'CDE') {
+        telefonoDestino = '595975550907';
+      } else if (this.clientData.sucursal === 'Asuncion') {
+        telefonoDestino = '595XXXXXXXXX'; // Reemplaza con el número de teléfono de Asunción
+      }
+
+      if (!telefonoDestino) {
+        throw new Error('El número de teléfono es requerido.');
+      }
+
+      const message = `Hola ${this.clientData.firstName}, adjunto encontrarás tu factura: ${pdfUrl}`;
+  
+      // Estructura del mensaje para enviar a la API de WhatsApp
+      const data = {
+        messaging_product: "whatsapp",
+        to: telefonoDestino,
+        type: "document",
+        document: {
+          link: pdfUrl,
+          filename: "factura.pdf"
+        }
+      };
+  
+      const tokenDeAcceso = 'EAAcMB0dgxPoBO2CD9ePD9fjowZCqiqgV3vp4uSFIJs4TEh4WphgZAHSYGlRqY8BPam7jG1ZBuhS1NpNgy5iVwV02oZCUiKDrUrrA4K4BMhPVSMdUZCBaXnzZA0gZC3uPu3Grv8TyHR59ZBwGyqVinh10Icr9cqEPixpNsTwauUMJZB1RAhi8q7XgWQZAxWt7mKiKzMGzJp0RRZAN8GLA0RmKUHlR274miqZB8lsHZCxoZD';
+  
+      // Enviar la solicitud POST a la API de WhatsApp
+      const response = await fetch(`https://graph.facebook.com/v22.0/588353174356306/messages`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${tokenDeAcceso}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(`Error al enviar el mensaje: ${errorResponse.error.message}`);
+      }
+  
+      const result = await response.json();
+      console.log("Mensaje enviado con éxito:", result);
+    } catch (error) {
+      console.error('Error al enviar el PDF a WhatsApp:', error);
+    }
+  }
+  
   eliminarProducto(producto: any): void {
     this.listaService.eliminarProducto(producto);
     this.productosEnLista = this.listaService.obtenerLista();

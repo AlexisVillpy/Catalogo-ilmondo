@@ -24,15 +24,8 @@ export class ListaService {
 
   private guardarEnLocalStorage(): void {
     if (isPlatformBrowser(this.platformId)) {
-      // Safe to use localStorage
-      const listaGuardada = localStorage.getItem('listaProductos');
-      if (listaGuardada) {
-        this.productosEnLista = JSON.parse(listaGuardada);
-      }
-    } else {
-      console.warn('localStorage is not available');
+      localStorage.setItem('listaProductos', JSON.stringify(this.productosEnLista));
     }
-    
   }
 
   agregarProducto(producto: any) {

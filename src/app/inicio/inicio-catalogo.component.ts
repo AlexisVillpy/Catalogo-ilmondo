@@ -90,6 +90,12 @@ export class InicioCatalogoComponent implements OnInit, AfterViewInit {
     } else {
       this.listaService.agregarProducto(producto);
     }
+    this.productosFiltrados = this.productosFiltrados.map(p => {
+      if (p.nombre === producto.nombre) {
+        return { ...p, seleccionado: !this.productoSeleccionado(producto) };
+      }
+      return p;
+    });
   }
 
   productoSeleccionado(producto: any): boolean {

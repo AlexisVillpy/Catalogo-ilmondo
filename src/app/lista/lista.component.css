@@ -17,7 +17,10 @@
   padding: 10px;
   margin-bottom: 10px;
   width: 100%;
-  justify-content: space-between;
+}
+
+.image-container {
+  flex-shrink: 0;
 }
 
 .image-container img {
@@ -30,6 +33,9 @@
 
 .card-body {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-title {
@@ -37,6 +43,8 @@
   font-weight: bold;
   margin: 0;
   color: #333;
+  white-space: normal; /* Permitir que el texto continúe libremente */
+  word-wrap: break-word; /* Permitir que el texto se ajuste a la línea */
 }
 
 .card-category {
@@ -51,32 +59,35 @@
   font-size: 1rem;
   font-weight: bold;
   color: #3181d2;
+  margin-top: 7px; /* Añadir margen superior */
 }
 
 .actions {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end; /* Alinear a la derecha */
+  margin-top: 10px; /* Añadir margen superior */
 }
 
 .quantity-control {
   display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 8px;
+  border: none; /* Eliminar el borde */
 }
 
 .quantity-row {
   display: flex;
   align-items: center;
   gap: 5px;
+  font-weight: 500;
 }
 
 .quantity-text {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #000;
-  padding-inline: 5px;
+  font-size: 0.9rem;
+  color: #303030;
+  font-weight: bold; /* Cambiar a negrita */
+  margin-bottom: -0px; /* Añadir margen superior */
 }
 
 .comet-v2-input-number {

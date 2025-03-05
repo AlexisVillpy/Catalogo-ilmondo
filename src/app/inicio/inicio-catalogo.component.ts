@@ -35,6 +35,9 @@ export class InicioCatalogoComponent implements OnInit, AfterViewInit {
   ];
 
   isLoading: boolean = true; // Controla la visibilidad del preloader
+  cantidad: number = 1; // Cantidad del producto a agregar
+  showCantidadModal: boolean = false; // Controla la visibilidad del modal
+  productoSeleccionadoParaAgregar: any = null; // Producto seleccionado para agregar
 
   constructor(private http: HttpClient, private listaService: ListaService) {}
 
@@ -85,24 +88,40 @@ export class InicioCatalogoComponent implements OnInit, AfterViewInit {
   }
 
   agregarALista(producto: any): void {
-    if (this.productoSeleccionado(producto)) {
+    if (this.esProductoSeleccionado(producto)) {
       this.listaService.eliminarProducto(producto);
     } else {
-      this.listaService.agregarProducto(producto);
+      this.productoSeleccionadoParaAgregar = producto;
+      this.showCantidadModal = true;
     }
-    this.productosFiltrados = this.productosFiltrados.map(p => {
-      if (p.nombre === producto.nombre) {
-        return { ...p, seleccionado: !this.productoSeleccionado(producto) };
-      }
-      return p;
-    });
   }
 
-  productoSeleccionado(producto: any): boolean {
+  confirmarAgregarALista(): void {
+    if (this.productoSeleccionadoParaAgregar) {
+      const productoConCantidad = { ...this.productoSeleccionadoParaAgregar, cantidad: this.cantidad };
+      this.listaService.agregarProducto(productoConCantidad);
+      this.showCantidadModal = false;
+      this.cantidad = 1; // Resetear la cantidad
+    }
+  }
+
+  cerrarModal(): void {
+    this.showCantidadModal = false;
+    this.cantidad = 1; // Resetear la cantidad
+  }
+
+  esProductoSeleccionado(producto: any): boolean {
     return this.listaService.obtenerLista().some((item) => item.nombre === producto.nombre);
   }
 
   onCategoryChange(): void {
     this.filtrarProductos();
+  }
+
+  // Asegurar que la cantidad mínima sea 1 y no permitir valores negativos o cero
+  asegurarCantidadMinima(): void {
+    if (this.cantidad < 1) {
+      this.cantidad = 1;
+    }
   }
 }

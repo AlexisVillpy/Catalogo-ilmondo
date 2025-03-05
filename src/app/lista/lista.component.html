@@ -110,39 +110,11 @@
       <div class="card-body">
         <h3 class="card-title">{{ producto.nombre }}</h3>
         <p class="card-category">{{ producto.categoria }}</p>
+        <!-- Mostrar la cantidad centrada, más suave, no tan grande y negro -->
+        <p class="quantity-text">Cantidad: {{ producto.cantidad }}</p>
         <p class="card-price">Gs. {{ producto.precio | number : "1.0-0" }}</p>
         <p class="iva-text">Disponibilidad sujeta a cambios • IVA incluido</p>
-      </div>
-
-      <div class="actions">
-        <div class="quantity-control">
-          <div class="comet-v2-input-number">
-            <!-- Botón de restar -->
-            <button
-              class="comet-v2-input-number-btn decrease"
-              (click)="restarCantidad(producto)"
-            >
-              <mat-icon class="small-icon">remove</mat-icon>
-            </button>
-
-            <!-- Input editable -->
-            <input
-              type="number"
-              class="comet-v2-input-number-input"
-              [(ngModel)]="producto.cantidad"
-              (change)="validarCantidad(producto)"
-              min="1"
-            />
-
-            <!-- Botón de sumar -->
-            <button
-              class="comet-v2-input-number-btn increase"
-              (click)="sumarCantidad(producto)"
-            >
-              <mat-icon class="small-icon">add</mat-icon>
-            </button>
-          </div>
-
+        <div class="actions">
           <!-- Enlace eliminar -->
           <a class="delete-link" (click)="eliminarProducto(producto)">
             <mat-icon class="delete-icon">delete</mat-icon>

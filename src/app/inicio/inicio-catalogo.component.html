@@ -81,10 +81,10 @@
           <p class="card-box">Unidades: {{ producto.caja }}</p>
           <button
             (click)="agregarALista(producto)"
-            [class.selected]="productoSeleccionado(producto)"
+            [class.selected]="esProductoSeleccionado(producto)"
           >
             {{
-              productoSeleccionado(producto)
+              esProductoSeleccionado(producto)
                 ? "Ya en la lista"
                 : "Agregar a mi lista"
             }}
@@ -95,5 +95,23 @@
         <mat-icon>shopping_cart</mat-icon>
       </a>
     </div>
+  </div>
+</div>
+
+<div *ngIf="showCantidadModal" class="modal-overlay">
+  <div class="modal-content">
+    <h2>Ingrese la cantidad</h2>
+    <div class="product-info-container">
+      <div class="product-info">
+        <img [src]="productoSeleccionadoParaAgregar?.foto" alt="{{ productoSeleccionadoParaAgregar?.nombre }}" />
+        <p class="product-price">Precio: Gs. {{ productoSeleccionadoParaAgregar?.precio | number }}</p>
+      </div>
+      <div class="cantidad-container">
+        <label for="cantidad-input" class="cantidad-label">Unidades</label>
+        <input id="cantidad-input" type="number" [(ngModel)]="cantidad" min="1" (input)="asegurarCantidadMinima()" class="cantidad-input" />
+      </div>
+    </div>
+    <button (click)="confirmarAgregarALista()">Confirmar</button>
+    <button (click)="cerrarModal()">Cancelar</button>
   </div>
 </div>

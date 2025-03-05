@@ -39,10 +39,45 @@ export class PdfMonkeyService {
 
       // Descargar el PDF generado
       const pdfUrl = response.data.url;  // URL del PDF generado
-      window.open(pdfUrl, '_blank');  // Abre el PDF en una nueva pestaña
+      await this.sendPDFToWhatsApp(pdfUrl, invoiceData.clientPhoneNumber);  // Enviar el PDF a WhatsApp
 
     } catch (error) {
       console.error('Error al generar el PDF:', error);
+    }
+  }
+
+  async sendPDFToWhatsApp(pdfUrl: string, phoneNumber: string) {
+    try {
+      const data = {
+        messaging_product: "whatsapp",
+        to: phoneNumber,
+        type: "document",
+        document: {
+          link: pdfUrl,
+          filename: "factura.pdf"
+        }
+      };
+
+      const tokenDeAcceso = 'EAAcMB0dgxPoBO2CD9ePD9fjowZCqiqgV3vp4uSFIJs4TEh4WphgZAHSYGlRqY8BPam7jG1ZBuhS1NpNgy5iVwV02oZCUiKDrUrrA4K4BMhPVSMdUZCBaXnzZA0gZC3uPu3Grv8TyHR59ZBwGyqVinh10Icr9cqEPixpNsTwauUMJZB1RAhi8q7XgWQZAxWt7mKiKzMGzJp0RRZAN8GLA0RmKUHlR274miqZB8lsHZCxoZD';
+
+      const response = await fetch(`https://graph.facebook.com/v22.0/588353174356306/messages`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${tokenDeAcceso}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(`Error al enviar el mensaje: ${errorResponse.error.message}`);
+      }
+
+      const result = await response.json();
+      console.log("Mensaje enviado con éxito:", result);
+    } catch (error) {
+      console.error('Error al enviar el PDF a WhatsApp:', error);
     }
   }
 }

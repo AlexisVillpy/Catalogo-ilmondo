@@ -349,3 +349,113 @@
 .selected {
   background-color: #4caf50 !important;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px 25px;
+  padding-top: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem; /* Reducir el tamaño de la fuente */
+  font-weight: 500; /* Hacer la fuente menos imponente */
+  color: #1c1c1c; /* Hacer el color más suave */
+}
+
+.modal-content input {
+  width: 100px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-content .cantidad-input {
+  text-align: center; /* Centrar el texto dentro del input */
+  margin-bottom: 5px; /* Agregar margen inferior */
+}
+
+.modal-content button {
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:first-of-type {
+  background-color: #3181d2; /* Cambiar a color azul */
+  color: white;
+}
+
+.modal-content button:last-of-type {
+  background-color: #f44336;
+  color: white;
+}
+
+.modal-content .product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-content .product-info img {
+  width: 180px; /* Aumentar el tamaño de la imagen */
+  height: 180px; /* Aumentar el tamaño de la imagen */
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.modal-content .product-info p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.modal-content .product-info .product-price {
+  font-size: 0.9rem; /* Hacer el precio más pequeño */
+  font-style: italic; /* Hacer el precio inclinado */
+  color: #666;
+}
+
+.modal-content .cantidad-label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.cantidad-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: -20px;
+}
+
+.product-info-container {
+  border: 1px solid #ddd; /* Borde fino */
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px; /* Agregar margen inferior */
+}

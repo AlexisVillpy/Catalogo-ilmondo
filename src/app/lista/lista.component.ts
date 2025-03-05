@@ -232,23 +232,4 @@ export class ListaComponent {
     this.listaService.eliminarProducto(producto);
     this.productosEnLista = this.listaService.obtenerLista();
   }
-
-  sumarCantidad(producto: any): void {
-    producto.cantidad = (producto.cantidad || 1) + 1;
-    this.listaService.actualizarCantidad(producto.nombre, producto.cantidad); // Guardar cambios
-  }
-
-  restarCantidad(producto: any): void {
-    if (producto.cantidad > 1) {
-      producto.cantidad--;
-      this.listaService.actualizarCantidad(producto.nombre, producto.cantidad); // Guardar cambios
-    }
-  }
-
-  validarCantidad(producto: any): void {
-    if (producto.cantidad < 1 || isNaN(producto.cantidad)) {
-      producto.cantidad = 1;
-    }
-    this.listaService.actualizarCantidad(producto.nombre, producto.cantidad); // Guardar cambios
-  }
 }

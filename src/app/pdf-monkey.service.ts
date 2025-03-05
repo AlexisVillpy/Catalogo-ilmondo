@@ -6,41 +6,14 @@ import axios from 'axios';
 })
 export class PdfMonkeyService {
 
-  private apiUrl = 'https://api.pdfmonkey.io/v1/documents';
-  private apiKey = 'bRzrMx1xbAqQQvnvxWMy';  // Sustituye con tu API key de PDFMonkey
+  private backendUrl = 'https://tu-nombre-de-aplicacion.herokuapp.com'; // URL de tu backend en Heroku
 
   constructor() { }
 
   async generateInvoicePDF(invoiceData: any) {
     try {
-      // Aquí configuras los datos que van a reemplazar la plantilla de PDFMonkey
-      const response = await axios.post(
-        this.apiUrl,
-        {
-          template: 'tu-template-id', // Sustituye con el ID de tu plantilla en PDFMonkey
-          data: {
-            invoice_number: invoiceData.invoiceNumber,
-            invoice_date: invoiceData.invoiceDate,
-            client_code: invoiceData.clientCode,
-            client_name: invoiceData.clientName,
-            client_email: invoiceData.clientEmail,
-            line_items: invoiceData.lineItems,
-            total_without_vat: invoiceData.totalWithoutVat,
-            deposit: invoiceData.deposit || 0,
-            due_date: invoiceData.dueDate
-          }
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${this.apiKey}`
-          }
-        }
-      );
-
-      // Descargar el PDF generado
-      const pdfUrl = response.data.url;  // URL del PDF generado
-      await this.sendPDFToWhatsApp(pdfUrl, invoiceData.clientPhoneNumber);  // Enviar el PDF a WhatsApp
-
+      const response = await axios.post(`${this.backendUrl}/generate-pdf`, invoiceData);
+      console.log('PDF generado y almacenado con éxito:', response.data);
     } catch (error) {
       console.error('Error al generar el PDF:', error);
     }

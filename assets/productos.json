@@ -341,23 +341,9 @@
       "categoria": "Café"
     },
     {
-      "nombre": "CAFE NOBLE ESSENCE GOLD 100GR",
-      "foto": "assets/fotos-productos/NobleessenceGold.png",
-      "precio":25900,
-      "caja":"12 u/caja",
-      "categoria": "Café"
-    },
-    {
       "nombre": "CAFE NOBLE BON AROMA GOLD 75 G SACHET",
       "foto": "assets/fotos-productos/cafeBonaromaSachet.png",
       "precio":15000,
-      "caja":"12 u/caja",
-      "categoria": "Café"
-    },
-    {
-      "nombre": "CAFE NOBLE ESSENCE GOLD 100GR",
-      "foto": "assets/fotos-productos/NobleessenceGold.png",
-      "precio":25900,
       "caja":"12 u/caja",
       "categoria": "Café"
     },

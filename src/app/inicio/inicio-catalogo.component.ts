@@ -25,6 +25,7 @@ export class InicioCatalogoComponent implements OnInit, AfterViewInit {
   productosFiltrados: any[] = []; // Productos filtrados por búsqueda/categoría
   searchTerm: string = '';
   selectedCategory: string = '';
+  selectedOrder: string = ''; // Nuevo campo para el orden seleccionado
   categorias: string[] = [
     'Cerveza',
     'Aloe Vera',
@@ -82,9 +83,27 @@ export class InicioCatalogoComponent implements OnInit, AfterViewInit {
 
       return coincideBusqueda && coincideCategoria;
     });
+
+    // Ordenar los productos filtrados si se seleccionó un orden
+    if (this.selectedOrder === 'asc') {
+      this.productosFiltrados.sort((a, b) => a.precio - b.precio);
+    } else if (this.selectedOrder === 'desc') {
+      this.productosFiltrados.sort((a, b) => b.precio - a.precio);
+    }
   }
 
   onCategoryChange(): void {
     this.filtrarProductos();
+  }
+
+  onOrderChange(): void {
+    this.filtrarProductos(); // Reaplicar el filtro y orden
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Desplazamiento suave
+    });
   }
 }

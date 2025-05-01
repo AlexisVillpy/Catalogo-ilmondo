@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 {
   "/api": {
     "target": "http://localhost:3000",
-    "secure": false
+    "secure": false,
+    "changeOrigin": true
   }
 }
-=======
->>>>>>> 5f6a6bf13ec68f0fac65e19da50e93e6f2096c72

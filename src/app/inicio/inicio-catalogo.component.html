@@ -10,7 +10,9 @@
   <div class="banner">
     <!-- Contenedor del logo principal -->
     <div class="logo-container">
-      <img src="assets/iconosylogos/logoilmondo.png" alt="Logo Ilmondo" />
+      <a href="javascript:void(0)" (click)="scrollToTop()"> <!-- Llamar a la función de desplazamiento -->
+        <img src="assets/iconosylogos/logoilmondo.png" alt="Logo Ilmondo" />
+      </a>
     </div>
 
     <!-- Botón de contacto -->
@@ -48,14 +50,26 @@
         />
       </div>
 
-      <!-- Desplegable Categorías -->
-      <div class="dropdown-container">
-        <select [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
-          <option value="">Todas las categorías</option>
-          <option *ngFor="let categoria of categorias" [value]="categoria">
-            {{ categoria }}
-          </option>
-        </select>
+      <!-- Contenedor para los dos desplegables -->
+      <div class="dropdown-group">
+        <!-- Nuevo desplegable para ordenar por precio -->
+        <div class="dropdown-container">
+          <select class="order-dropdown" [(ngModel)]="selectedOrder" (change)="onOrderChange()">
+            <option value="" hidden>Ordenar por...</option>
+            <option value="asc">Menor precio</option>
+            <option value="desc">Mayor precio</option>
+          </select>
+        </div>
+
+        <!-- Desplegable Categorías existente -->
+        <div class="dropdown-container">
+          <select class="category-dropdown" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+            <option value="">Todas las categorías</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria">
+              {{ categoria }}
+            </option>
+          </select>
+        </div>
       </div>
     </div>
 

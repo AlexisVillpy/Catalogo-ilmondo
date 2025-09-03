@@ -394,7 +394,7 @@
     {
       "nombre": "CAFE NOBLE ESSENCE BRAZIL 100GR",
       "foto": "assets/fotos-productos/NobleessenceBrazil.png",
-      "preciogs": 25900,
+      "preciogs": 35000,
       "precio$": 5.00,
       "caja": "12 u/caja",
       "categoria": "Café"
@@ -402,7 +402,15 @@
     {
       "nombre": "CAFE NOBLE ESSENCE EXCLUSIVE 100GR",
       "foto": "assets/fotos-productos/NobleessenceExclusive.png",
-      "preciogs": 25900,
+      "preciogs": 35000,
+      "precio$": 5.00,
+      "caja": "12 u/caja",
+      "categoria": "Café"
+    },
+    {
+      "nombre": "CAFE NOBLE ESSENCE GOLD 100GR",
+      "foto": "assets/fotos-productos/NobleessenceGold.png",
+      "preciogs": 35000,
       "precio$": 5.00,
       "caja": "12 u/caja",
       "categoria": "Café"

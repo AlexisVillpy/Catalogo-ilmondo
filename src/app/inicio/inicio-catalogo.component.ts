@@ -74,11 +74,12 @@ export class InicioCatalogoComponent implements OnInit, AfterViewInit {
     this.productosFiltrados = this.productos.filter((producto) => {
       const coincideBusqueda =
         producto.nombre.toLowerCase().includes(termino) ||
-        producto.precio.toString().includes(termino) ||
-        producto.caja.toString().includes(termino);
+        producto.preciogs.toString().includes(termino) ||
+        producto['precio$'].toString().includes(termino) ||
+        producto.caja.toLowerCase().includes(termino);
 
       const coincideCategoria = this.selectedCategory
-        ? producto.categoria === this.selectedCategory
+        ? producto.categoria.toLowerCase() === this.selectedCategory.toLowerCase()
         : true;
 
       return coincideBusqueda && coincideCategoria;
@@ -86,9 +87,9 @@ export class InicioCatalogoComponent implements OnInit, AfterViewInit {
 
     // Ordenar los productos filtrados si se seleccionó un orden
     if (this.selectedOrder === 'asc') {
-      this.productosFiltrados.sort((a, b) => a.precio - b.precio);
+      this.productosFiltrados.sort((a, b) => a.preciogs - b.preciogs);
     } else if (this.selectedOrder === 'desc') {
-      this.productosFiltrados.sort((a, b) => b.precio - a.precio);
+      this.productosFiltrados.sort((a, b) => b.preciogs - a.preciogs);
     }
   }
 

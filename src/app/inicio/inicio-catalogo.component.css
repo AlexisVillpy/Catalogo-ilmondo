@@ -75,6 +75,20 @@
   font-weight: normal;
 }
 
+.card-price {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espacio entre "Precio c/u" y el número */
+  font-size: 0.9rem; /* Ajustar el tamaño del texto */
+  margin: 5px 0;
+}
+
+
+.card-price .price-number {
+  font-weight: bold; /* Negritas para el precio */
+  color: #1a2e4f; /* Azul más oscuro para mayor contraste */
+}
+
 .title {
   font-size: clamp(1rem, 2.5vw, 1.8rem);
   font-weight: bold;

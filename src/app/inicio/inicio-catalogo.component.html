@@ -88,9 +88,12 @@
         <div class="card-body">
           <h3 class="card-title">{{ producto.nombre }}</h3>
           <p class="card-price">
-            Precio c/u:
-            <span class="price-number">{{ producto.precio | number }}</span>
-            <span class="price-currency">gs</span>
+            <span class="price-label">Precio c/u:</span> 
+            <span class="price-number"><strong>{{ producto.preciogs | number }}gs</strong></span>
+          </p>
+          <p class="card-price">
+            <span class="price-label">Precio c/u:</span> 
+            <span class="price-number"><strong>${{ producto['precio$'] | number:'1.2-2' }}</strong></span>
           </p>
           <p class="card-box">Unidades: {{ producto.caja }}</p>
           <button>

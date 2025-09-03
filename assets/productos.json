@@ -275,7 +275,7 @@
       "nombre": "CERVEZA  EDELMEISTER STRONG 8.8% 500ML",
       "foto": "assets/fotos-productos/strong.png",
       "preciogs": 8000,
-      "precio$": 1.00,
+      "precio$": 1.10,
       "caja": "24 u/caja",
       "categoria": "Cerveza"
     },
@@ -283,7 +283,7 @@
       "nombre": "CERVEZA  EDELMEISTER IPA 4.7% 500ML",
       "foto": "assets/fotos-productos/ipa.png",
       "preciogs": 8000,
-      "precio$": 1.00,
+      "precio$": 1.10,
       "caja": "24 u/caja",
       "categoria": "Cerveza"
     },
@@ -291,7 +291,7 @@
       "nombre": "CERVEZA  EDELMEISTER WEIZEN 5.2% 500ML",
       "foto": "assets/fotos-productos/weizen.png",
       "preciogs": 8000,
-      "precio$": 1.00,
+      "precio$": 1.10,
       "caja": "24 u/caja",
       "categoria": "Cerveza"
     },
@@ -299,7 +299,7 @@
       "nombre": "CERVEZA  EDELMEISTER SCHWARZBIER 500ML",
       "foto": "assets/fotos-productos/Schwarzbier.png",
       "preciogs": 8000,
-      "precio$": 1.00,
+      "precio$": 1.10,
       "caja": "24 u/caja",
       "categoria": "Cerveza"
     },
@@ -339,7 +339,7 @@
       "nombre": "CAFE BON AROMA CLASSIC 200GR",
       "foto": "assets/fotos-productos/cafeBonaromaClassic200gr.png",
       "preciogs": 35000,
-      "precio$": 5.00,
+      "precio$": 5.50,
       "caja": "12 u/caja",
       "categoria": "Café"
     },
@@ -347,7 +347,7 @@
       "nombre": "CAFE BON AROMA CLASSIC 100GR",
       "foto": "assets/fotos-productos/cafeBonaromaClassic100gr.png",
       "preciogs": 21000,
-      "precio$": 3.00,
+      "precio$": 3.25,
       "caja": "12 u/caja",
       "categoria": "Café"
     },
@@ -355,7 +355,7 @@
       "nombre": "CAFE BON AROMA CLASSIC 50GR",
       "foto": "assets/fotos-productos/cafeBonaromaClassic50gr.png",
       "preciogs": 13400,
-      "precio$": 2.00,
+      "precio$": 2.25,
       "caja": "12 u/caja",
       "categoria": "Café"
     },
@@ -363,7 +363,7 @@
       "nombre": "CAFE BON AROMA DESCAFEINADO CLASSIC 100GR",
       "foto": "assets/fotos-productos/CAFEBONAROMADECAFEINATEDCLASSIC100GR.png",
       "preciogs": 24900,
-      "precio$": 3.75,
+      "precio$": 4.00,
       "caja": "12 u/caja",
       "categoria": "Café"
     },
@@ -379,7 +379,7 @@
       "nombre": "CAFE BON AROMA GOLD 50GR",
       "foto": "assets/fotos-productos/CAFEBONAROMAGOLD50GR.jpg",
       "preciogs": 14900,
-      "precio$": 2.25,
+      "precio$": 2.50,
       "caja": "12 u/caja",
       "categoria": "Café"
     },
@@ -395,7 +395,7 @@
       "nombre": "CAFE NOBLE ESSENCE BRAZIL 100GR",
       "foto": "assets/fotos-productos/NobleessenceBrazil.png",
       "preciogs": 25900,
-      "precio$": 3.75,
+      "precio$": 5.00,
       "caja": "12 u/caja",
       "categoria": "Café"
     },
@@ -403,7 +403,7 @@
       "nombre": "CAFE NOBLE ESSENCE EXCLUSIVE 100GR",
       "foto": "assets/fotos-productos/NobleessenceExclusive.png",
       "preciogs": 25900,
-      "precio$": 3.75,
+      "precio$": 5.00,
       "caja": "12 u/caja",
       "categoria": "Café"
     },
@@ -419,7 +419,7 @@
       "nombre": "ACEITE DE OLIVA EXTRA VIRGEN 5L LATA",
       "foto": "assets/fotos-productos/Aceitevirgen5lPietro.png",
       "preciogs": 648207,
-      "precio$": 82.00,
+      "precio$": 82.25,
       "caja": "4 u/caja",
       "categoria": "Pietro Coricelli"
     },
@@ -427,7 +427,7 @@
       "nombre": "ACEITE DE OLIVA POMACE PIETRO 5L",
       "foto": "assets/fotos-productos/Aceitepomace5lPietro.png",
       "preciogs": 360115,
-      "precio$": 45.50,
+      "precio$": 46.25,
       "caja": "4 u/caja",
       "categoria": "Pietro Coricelli"
     },
@@ -435,7 +435,7 @@
       "nombre": "ACEITE DE OLIVA EXTRA VIRGEN PIETRO 1L",
       "foto": "assets/fotos-productos/Aceitevirgen1lPietro.png",
       "preciogs": 152641,
-      "precio$": 19.50,
+      "precio$": 18.50,
       "caja": "12 u/caja",
       "categoria": "Pietro Coricelli"
     },
@@ -459,7 +459,7 @@
       "nombre": "SALSA DE TOMATE BOLOGNESA 350GR",
       "foto": "assets/fotos-productos/SalsaBolognese.png",
       "preciogs": 25064,
-      "precio$": 3.00,
+      "precio$": 3.50,
       "caja": "12 u/caja",
       "categoria": "Pietro Coricelli"
     },
@@ -475,7 +475,7 @@
       "nombre": "SALSA PESTO GENOVESE 190GR",
       "foto": "assets/fotos-productos/SalsaPesto.png",
       "preciogs": 29380,
-      "precio$": 3.75,
+      "precio$": 4.00,
       "caja": "12 u/caja",
       "categoria": "Pietro Coricelli"
     },
@@ -483,7 +483,7 @@
       "nombre": "ACETO BALSAMICO DI MODENA 500ML",
       "foto": "assets/fotos-productos/Aceto500ml.png",
       "preciogs": 27009,
-      "precio$": 3.50,
+      "precio$": 3.75,
       "caja": "12 u/caja",
       "categoria": "Pietro Coricelli"
     },
@@ -491,7 +491,7 @@
       "nombre": "ACETO BALSAMICO DI MODENA 250ML",
       "foto": "assets/fotos-productos/Aceto250ml.png",
       "preciogs": 17424,
-      "precio$": 2.25,
+      "precio$": 2.50,
       "caja": "12 u/caja",
       "categoria": "Pietro Coricelli"
     }
